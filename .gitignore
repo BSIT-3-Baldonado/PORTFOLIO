@@ -7,3 +7,5 @@ dist/
 .DS_Store
 .idea/
 __pycache__/
+.vercel
+.env*
