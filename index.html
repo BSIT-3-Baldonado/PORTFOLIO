@@ -336,16 +336,72 @@
 
   .form-group{margin-bottom:22px;}
   .form-group label{display:block;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+  .glass{
+    background:rgba(22,26,34,.55);
+    border:1px solid rgba(38,44,56,.9);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    box-shadow:0 18px 60px -40px rgba(0,0,0,.7);
+  }
+  html[data-theme="light"] .glass{
+    background:rgba(255,255,255,.55);
+    border:1px solid rgba(226,221,211,.85);
+    box-shadow:0 18px 60px -40px rgba(0,0,0,.25);
+  }
+
+  .contact-form{
+    border-radius:18px;
+    padding:28px;
+    position:relative;
+    overflow:hidden;
+  }
+  .contact-form::before{
+    content:'';
+    position:absolute;
+    inset:-2px;
+    background:radial-gradient(800px 400px at 10% 0%, rgba(224,168,104,.22), transparent 60%),
+               radial-gradient(700px 420px at 100% 30%, rgba(94,200,216,.16), transparent 55%);
+    pointer-events:none;
+    opacity:.9;
+  }
+  .contact-form > *{position:relative;z-index:1;}
+
+  .form-group{margin-bottom:22px;}
+  .form-group label{display:block;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+
   .form-group input, .form-group textarea{
-    width:100%;background:var(--bg-card);border:1px solid var(--line);border-radius:10px;
-    padding:14px 16px;color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:15px;
-    transition:border-color .3s, box-shadow .3s;
+    width:100%;
+    background:rgba(17,20,26,.35);
+    border:1px solid rgba(38,44,56,.95);
+    border-radius:12px;
+    padding:14px 16px;
+    color:var(--text);
+    font-family:'Space Grotesk',sans-serif;
+    font-size:15px;
+    transition:border-color .25s, box-shadow .25s, transform .25s, background .25s;
+  }
+  html[data-theme="light"] .form-group input,
+  html[data-theme="light"] .form-group textarea{
+    background:rgba(255,255,255,.45);
+    border:1px solid rgba(226,221,211,.95);
   }
   .form-group input:focus, .form-group textarea:focus{
-    outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(224,168,104,.12);
+    outline:none;
+    border-color:rgba(224,168,104,.95);
+    box-shadow:0 0 0 3px rgba(224,168,104,.14);
+    transform:translateY(-1px);
   }
   .form-group textarea{resize:vertical;min-height:120px;}
-  .form-status{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent-2);margin-top:14px;min-height:1.2em;}
+
+  .form-status{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    color:var(--accent-2);
+    margin-top:14px;
+    min-height:1.2em;
+    letter-spacing:0.2px;
+  }
+
 
   footer{border-top:1px solid var(--line);padding:36px 6%;text-align:center;font-family:'JetBrains Mono',monospace;color:var(--muted);font-size:12px;letter-spacing:1px;position:relative;z-index:1;}
 
@@ -408,9 +464,10 @@
       <h1><span class="hi">Hi, I'm</span> <span class="accent-name">Ken.</span></h1>
       <div class="typing-line" id="typingLine"><span id="typingText"></span><span class="cursor"></span></div>
       <p>I'm Ken Gabriel Baldonado — I design and build clean, fast, cinematic web experiences and full-stack systems that turn ideas into products people remember.</p>
-      <div class="hero-cta">
+  <div class="hero-cta">
         <a href="#work" class="btn btn-primary">View My Work</a>
-        <a href="#" class="btn btn-outline" download>Download Resume ↓</a>
+        <a href="/api/resume" class="btn btn-outline" download="Ken-Gabriel-Baldonado-Resume.pdf">Download Resume ↓</a>
+
       </div>
     </div>
     <div class="hero-visual" id="parallaxImg">
@@ -526,7 +583,7 @@
 <section id="work">
   <div class="sec-head reveal">
     <span class="sec-num">03</span>
-    <h2>Selected <em>work</em></h2>
+    <h2>Selected <em>project</em></h2>
   </div>
 
   <div class="filter-row reveal">
@@ -619,15 +676,16 @@
   </div>
 </section>
 
-<section id="experience">
+<section id="Educational Attainment">
   <div class="sec-head reveal">
     <span class="sec-num">04</span>
-    <h2>Experience</h2>
+    <h2>Educational <em>Background</em></h2>
   </div>
   <div class="timeline">
     <!-- Education -->
     <div class="t-item reveal">
       <div class="t-date">2008 — 2014</div>
+
       <h3>
         Elementary · Legazpi Port Elementary School
         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Legazpi%20Port%20Elementary%20School" target="_blank" rel="noopener noreferrer">View on Map ↗</a>
@@ -662,12 +720,21 @@
       <p>Developed technical capability in technology and systems, with growing emphasis on real-world application and professionalism.</p>
     </div>
 
+<section id="experience">
+  <div class="sec-head reveal">
+    <span class="sec-num"></span>
+    <h2>Work <em>Experience</em></h2>
+  </div>
     <!-- Experience -->
     <div class="t-item reveal">
       <div class="t-date">June 2025 — April 2026</div>
-      <h3>Trainee Admin / System Administrator</h3>
+      <h3>
+        Trainee Admin / System Administrator
+      </h3>
       <p>Managed and maintained system infrastructure, handled user accounts and access controls, monitored system performance, and provided technical support to ensure smooth daily operations.</p>
     </div>
+
+
     <div class="t-item reveal">
       <div class="t-date">2024 — Present</div>
       <h3>Full Stack Developer · Freelance</h3>
@@ -720,7 +787,8 @@
         <a href="#" aria-label="Facebook">f</a>
       </div>
     </div>
-    <form class="slide-right" id="contactForm">
+    <form class="slide-right contact-form glass" id="contactForm">
+
       <div class="form-group">
         <label for="cname">Name</label>
         <input type="text" id="cname" name="name" placeholder="Your name" required>
@@ -733,6 +801,13 @@
         <label for="cmsg">Message</label>
         <textarea id="cmsg" name="message" placeholder="Tell me about your project..." required></textarea>
       </div>
+
+      <!-- Honeypot (anti-spam). Leave empty. -->
+      <div style="display:none;">
+        <label for="hp_field">Leave this field empty</label>
+        <input type="text" id="hp_field" name="hp_field" autocomplete="off">
+      </div>
+
       <button type="submit" class="btn btn-primary">Send Message</button>
       <div class="form-status" id="formStatus"></div>
     </form>
@@ -882,13 +957,47 @@
     });
   });
 
-  // Contact form (demo only — no backend)
+  // Contact form → POST /api/contact
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
-  form.addEventListener('submit', (e) => {
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    status.textContent = "Thanks! Your message has been noted. I'll get back to you soon.";
-    form.reset();
+
+    const payload = {
+      name: document.getElementById('cname').value,
+      email: document.getElementById('cemail').value,
+      message: document.getElementById('cmsg').value,
+      hp_field: document.getElementById('hp_field')?.value ?? '',
+    };
+
+    status.style.color = '';
+    status.textContent = 'Sending...';
+
+    try {
+      const resp = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await resp.json().catch(() => ({}));
+
+      if (!resp.ok) {
+        const msg = data?.error || 'Failed to send message.';
+        status.style.color = 'var(--accent-2)';
+        status.textContent = msg;
+        return;
+      }
+
+      status.style.color = 'var(--accent)';
+      status.textContent = "Thanks! Message sent successfully. I'll get back to you soon.";
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      status.style.color = 'var(--accent-2)';
+      status.textContent = 'Network error. Please try again.';
+    }
   });
 </script>
 
