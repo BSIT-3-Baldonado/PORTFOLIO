@@ -466,7 +466,7 @@
       <p>I'm Ken Gabriel Baldonado — I design and build clean, fast, cinematic web experiences and full-stack systems that turn ideas into products people remember.</p>
   <div class="hero-cta">
         <a href="#work" class="btn btn-primary">View My Work</a>
-        <a href="/api/resume" class="btn btn-outline" download="Ken-Gabriel-Baldonado-Resume.pdf">Download Resume ↓</a>
+<a href="/api/resume" class="btn btn-outline" download="Ken_Baldonado_FlowCV_Resume_2026-06-18.pdf">Download Resume ↓</a>
 
       </div>
     </div>
@@ -984,10 +984,12 @@
       const data = await resp.json().catch(() => ({}));
 
       if (!resp.ok) {
-        const msg = data?.error || 'Failed to send message.';
-        status.style.color = 'var(--accent-2)';
-        status.textContent = msg;
-        return;
+      // Avoid noisy generic errors; backend may return richer details.
+      const msg = data?.error || data?.details || 'Failed to send message.';
+      status.style.color = 'var(--accent-2)';
+      status.textContent = typeof msg === 'string' ? msg : 'Failed to send message.';
+      return;
+
       }
 
       status.style.color = 'var(--accent)';

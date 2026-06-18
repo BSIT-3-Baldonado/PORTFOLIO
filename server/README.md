@@ -42,7 +42,8 @@ npm run dev
 Server will listen on: `http://localhost:3000`
 
 ## Database migration
-Run `001_create_messages.sql` in your Neon project SQL editor.
+Run `server/migrations/001_create_messages.sql` in your Neon project SQL editor.
+
 
 ## Test contact
 From browser / frontend, submit the form.

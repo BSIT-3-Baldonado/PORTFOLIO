@@ -19,10 +19,12 @@ export function createEmailTransport() {
 }
 
 export async function sendContactEmail({ name, email, message }) {
+  // Always send to the portfolio owner email.
   const to = process.env.CONTACT_TO_EMAIL || 'Kengabriel110720@gmail.com';
   const from = process.env.CONTACT_FROM_EMAIL || process.env.SMTP_USER;
 
   const subject = process.env.CONTACT_SUBJECT || 'New Portfolio Contact Message';
+
   const html = `
     <p><strong>New message from:</strong> ${escapeHtml(name)}</p>
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
